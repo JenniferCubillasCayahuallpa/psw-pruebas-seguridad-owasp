@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Laboratorio OWASP · AulaSegura{% endblock %}
+{% block crumb %}Laboratorio OWASP{% endblock %}
+{% block page_title %}Laboratorio de vulnerabilidades{% endblock %}
+
+{% set xss_payload = '<img src=x onerror="document.getElementById(\'banner-xss\').textContent=\'XSS EJECUTADO · código del atacante\'">' %}
+
+{% block content %}
+{% if lab_mode %}
+<div class="banner-lab">{{ icon('triangle-alert', 19) }} <span><strong>Modo laboratorio activo.</strong> Las rutas siguientes son vulnerables a propósito para practicar con OWASP ZAP o Burp Suite. No las expongas en producción.</span></div>
+{% else %}
+<div class="banner-lab secure">{{ icon('shield-check', 19) }} <span><strong>Modo seguro activo.</strong> Las rutas vulnerables están desactivadas. Para la práctica ejecuta <code>python run.py --lab</code> y reinicia el servidor.</span></div>
+{% endif %}
+
+<section class="hero">
+  <span class="hero-badge">{{ icon('bug', 15) }} OWASP Top 10 · 2021</span>
+  <h1>Pruebas de seguridad controladas</h1>
+  <p>Seis vulnerabilidades representativas, cada una con su versión corregida. Ejecuta el ataque, observa la respuesta y compara con el control seguro.</p>
+</section>
+
+<div class="grid cols-2 mt-5">
+  <article class="card vuln-card">
+    <div class="row between"><h3>{{ icon('code', 18) }} XSS reflejado</h3><span class="severity alta">A03 · Alta</span></div>
+    <p class="muted small">El parámetro <code>q</code> se inserta sin escapar en el HTML y sin CSP.</p>
+    <button class="btn subtle sm" type="button" data-copy="{{ xss_payload }}">{{ icon('clipboard', 15) }} Copiar payload</button>
+    <div class="row wrap mt-3">
+      <a class="btn ghost sm" href="/lab/buscar?q={{ xss_payload|urlencode }}">Probar vulnerable</a>
+      <a class="btn ghost sm" href="/lab/buscar_seguro?q={{ xss_payload|urlencode }}">Ver corregido</a>
+    </div>
+  </article>
+
+  <article class="card vuln-card">
+    <div class="row between"><h3>{{ icon('terminal', 18) }} Inyección SQL</h3><span class="severity alta">A03 · Crítica</span></div>
+    <p class="muted small">Concatenación directa de SQL y mensajes de error detallados.</p>
+    <form method="post" action="/lab/login_sqli" class="row wrap mt-3">
+      <input type="hidden" name="username" value="' OR 1=1 --">
+      <input type="hidden" name="password" value="cualquiera">
+      <button class="btn ghost sm" type="submit">Probar vulnerable</button>
+    </form>
+    <a class="btn ghost sm mt-3" href="/lab/login_seguro">{{ icon('lock', 15) }} Ver corregido</a>
+  </article>
+
+  <article class="card vuln-card">
+    <div class="row between"><h3>{{ icon('eye', 18) }} IDOR</h3><span class="severity alta">A01 · Alta</span></div>
+    <p class="muted small">Cualquier visitante puede consultar el perfil de otro usuario cambiando el parámetro <code>id</code>.</p>
+    <div class="row wrap mt-3">
+      <a class="btn ghost sm" href="/lab/perfil?id=2">Probar vulnerable</a>
+      <a class="btn ghost sm" href="/lab/perfil_seguro?id=2">Ver corregido</a>
+    </div>
+  </article>
+
+  <article class="card vuln-card">
+    <div class="row between"><h3>{{ icon('refresh', 18) }} CSRF por GET</h3><span class="severity media">A01 · Media</span></div>
+    <p class="muted small">Una URL cambia el rol de un usuario sin autenticación ni token antisolicitud.</p>
+    <div class="row wrap mt-3">
+      <a class="btn ghost sm" href="/lab/cambiar_rol?username=invitado&amp;rol=admin">Probar vulnerable</a>
+      <span class="badge">Corregido: POST + JWT + CSRF</span>
+    </div>
+  </article>
+
+  <article class="card vuln-card">
+    <div class="row between"><h3>{{ icon('server', 18) }} Configuración insegura</h3><span class="severity media">A05 · Media</span></div>
+    <p class="muted small">Respuesta sin CSP, nosniff, X-Frame-Options ni Referrer-Policy.</p>
+    <div class="row wrap mt-3">
+      <a class="btn ghost sm" href="/lab/sin_headers">Probar vulnerable</a>
+      <a class="btn ghost sm" href="/app">Ver cabeceras correctas</a>
+    </div>
+  </article>
+
+  <article class="card vuln-card">
+    <div class="row between"><h3>{{ icon('file-badge', 18) }} Errores detallados</h3><span class="severity media">A05 · Media</span></div>
+    <p class="muted small">Trazas con rutas internas, dependencias y secretos expuestos al usuario.</p>
+    <div class="row wrap mt-3">
+      <a class="btn ghost sm" href="/lab/error?detalle=select">Probar vulnerable</a>
+      <a class="btn ghost sm" href="/app/auditoria">Ver registro seguro</a>
+    </div>
+  </article>
+</div>
+
+<div class="card mt-5">
+  <div class="card-title">{{ icon('camera', 19) }} <h2>Evidencias y reporte</h2></div>
+  <p class="muted small mt-3">Ejecuta <code>python scripts/ejecutar_pruebas.py</code> para correr Selenium, capturar cada hallazgo y generar <code>reports/informe_seguridad.html</code> con capturas reales.</p>
+  <div class="row wrap mt-3">
+    <a class="btn primary sm" href="/static/evidencias/informe.html">{{ icon('file-badge', 16) }} Abrir informe</a>
+    <a class="btn ghost sm" href="/static/evidencias/">{{ icon('camera', 16) }} Capturas</a>
+  </div>
+</div>
+{% endblock %}

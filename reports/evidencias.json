@@ -1,0 +1,216 @@
+{
+  "titulo": "Evidencias de pruebas de seguridad OWASP",
+  "fecha": "2026-11-23T23:20:45.007097+00:00",
+  "metodo": "Selenium (Chrome headless) + peticiones HTTP reproducibles",
+  "capturas": [
+    {
+      "archivo": "capturas/01_login.png",
+      "descripcion": "Pantalla de acceso del portal (diseño celeste/azul/blanco)"
+    },
+    {
+      "archivo": "capturas/02_dashboard_admin.png",
+      "descripcion": "Panel del administrador con controles de seguridad activos"
+    },
+    {
+      "archivo": "capturas/03_laboratorio.png",
+      "descripcion": "Portal del laboratorio con los seis vectores de prueba"
+    },
+    {
+      "archivo": "capturas/04_xss_reflejado.png",
+      "descripcion": "XSS reflejado: el payload se ejecuta y modifica el DOM"
+    },
+    {
+      "archivo": "capturas/05_xss_corregido.png",
+      "descripcion": "Versión corregida: escape de salida + CSP bloquean el payload"
+    },
+    {
+      "archivo": "capturas/06_sqli_bypass.png",
+      "descripcion": "Inyección SQL: bypass de autenticación y volcado de usuarios"
+    },
+    {
+      "archivo": "capturas/07_sqli_corregido.png",
+      "descripcion": "Versión corregida: consulta parametrizada, sin bypass"
+    },
+    {
+      "archivo": "capturas/08_idor.png",
+      "descripcion": "IDOR: perfil ajeno consultado sin autenticación"
+    },
+    {
+      "archivo": "capturas/09_csrf_get.png",
+      "descripcion": "CSRF: una petición GET cambia el rol sin token ni autenticación"
+    },
+    {
+      "archivo": "capturas/10_headers_inseguros.png",
+      "descripcion": "Respuesta sin cabeceras de seguridad"
+    },
+    {
+      "archivo": "capturas/11_error_verbose.png",
+      "descripcion": "Fuga de información: traza con secretos y rutas internas"
+    },
+    {
+      "archivo": "capturas/12_rbac_denegado.png",
+      "descripcion": "Control funcionando: estudiante recibe 403 en administración"
+    },
+    {
+      "archivo": "capturas/13_informe_generado.png",
+      "descripcion": "Informe de hallazgos con las capturas incrustadas"
+    },
+    {
+      "archivo": "capturas/14_zap_alerts.png",
+      "descripcion": "Interfaz de OWASP ZAP con las alertas del escaneo"
+    }
+  ],
+  "verificaciones": {
+    "OWASP-01": {
+      "payload": "<img src=x onerror=\"document.getElementById('banner-xss').textContent='XSS EJECUTADO · código del atacante'\">",
+      "vulnerable": {
+        "url": "/lab/buscar",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Cache-Control": "no-store"
+        }
+      },
+      "corregido": {
+        "url": "/lab/buscar_seguro",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=()",
+          "Cache-Control": "no-store"
+        }
+      },
+      "evidencia": "El contenido del parámetro q aparece sin escapar y se ejecuta el manejador onerror."
+    },
+    "OWASP-02": {
+      "payload": "' OR 1=1 --",
+      "vulnerable": {
+        "url": "/lab/login_sqli",
+        "metodo": "POST",
+        "codigo": 200,
+        "cabeceras": {
+          "Cache-Control": "no-store"
+        }
+      },
+      "corregido": {
+        "url": "/lab/login_seguro",
+        "metodo": "POST",
+        "codigo": 200,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+        }
+      },
+      "evidencia": "La consulta concatenada devuelve todos los usuarios; la versión ORM no."
+    },
+    "OWASP-03": {
+      "payload": "/lab/perfil?id=2",
+      "vulnerable": {
+        "url": "/lab/perfil?id=2",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=()",
+          "Cache-Control": "no-store"
+        }
+      },
+      "corregido": {
+        "url": "/lab/perfil_seguro?id=2",
+        "metodo": "GET",
+        "codigo": 401,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=()",
+          "Cache-Control": "no-store"
+        }
+      },
+      "evidencia": "El endpoint devuelve correo y rol de otro usuario sin verificar la sesión."
+    },
+    "OWASP-04": {
+      "payload": "/lab/cambiar_rol?username=invitado&rol=admin",
+      "vulnerable": {
+        "url": "/lab/cambiar_rol?username=invitado&rol=admin",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Cache-Control": "no-store"
+        }
+      },
+      "corregido": {
+        "url": "/lab/cambiar_rol_seguro",
+        "metodo": "POST",
+        "codigo": 401,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+        }
+      },
+      "evidencia": "El estado cambia con un simple GET; la versión corregida exige POST, JWT de admin y CSRF."
+    },
+    "OWASP-05": {
+      "payload": "/lab/sin_headers",
+      "vulnerable": {
+        "url": "/lab/sin_headers",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Cache-Control": "no-store"
+        }
+      },
+      "corregido": {
+        "url": "/login",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=()"
+        }
+      },
+      "evidencia": "Comparativa de cabeceras: la ruta vulnerable omite CSP, nosniff y X-Frame-Options."
+    },
+    "OWASP-06": {
+      "payload": "/lab/error?detalle=select",
+      "vulnerable": {
+        "url": "/lab/error?detalle=select",
+        "metodo": "GET",
+        "codigo": 500,
+        "cabeceras": {
+          "Cache-Control": "no-store"
+        }
+      },
+      "corregido": {
+        "url": "/app/auditoria",
+        "metodo": "GET",
+        "codigo": 200,
+        "cabeceras": {
+          "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "geolocation=(), microphone=(), camera=(), payment=()"
+        }
+      },
+      "evidencia": "La respuesta expone JWT_SECRET, rutas del servidor y credenciales de base de datos."
+    },
+    "CONTROL-RBAC": {
+      "payload": "/app/usuarios con rol estudiante",
+      "corregido": {
+        "codigo": 403,
+        "detalle": "Acceso denegado por RBAC"
+      }
+    }
+  },
+  "reporte_capturado": true
+}

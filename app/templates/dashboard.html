@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Panel · AulaSegura{% endblock %}
+{% block crumb %}Panel{% endblock %}
+{% block page_title %}Panel general{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <span class="hero-badge">{{ icon('sparkles', 15) }} Sesión verificada · {{ g.current_user.role_label }}</span>
+  <h1>Hola, {{ g.current_user.full_name.split()[0] }}</h1>
+  <p>Este espacio reúne tus cursos, estudiantes y eventos de seguridad. Cada acción se valida con un token firmado y se registra en la auditoría.</p>
+</section>
+
+<div class="grid cols-4 mt-5">
+  <article class="card stat">
+    <div>
+      <div class="value">{{ stats.cursos }}</div>
+      <div class="label">Cursos disponibles</div>
+    </div>
+    <span class="stat-icon">{{ icon('book-open', 21) }}</span>
+  </article>
+  <article class="card stat">
+    <div>
+      <div class="value">{{ stats.estudiantes }}</div>
+      <div class="label">Estudiantes activos</div>
+    </div>
+    <span class="stat-icon">{{ icon('users', 21) }}</span>
+  </article>
+  <article class="card stat">
+    <div>
+      <div class="value">{{ stats.promedio }}</div>
+      <div class="label">Promedio de notas</div>
+    </div>
+    <span class="stat-icon">{{ icon('chart', 21) }}</span>
+  </article>
+  <article class="card stat warn">
+    <div>
+      <div class="value">{{ stats.alertas }}</div>
+      <div class="label">Alertas auditadas</div>
+    </div>
+    <span class="stat-icon">{{ icon('triangle-alert', 21) }}</span>
+  </article>
+</div>
+
+<div class="grid cols-2 mt-5">
+  <article class="card">
+    <div class="card head">
+      <div class="card-title">{{ icon('users', 19) }} <h2>Distribución de roles</h2></div>
+      <span class="badge">RBAC activo</span>
+    </div>
+    <div class="chart mt-5">
+      {% for item in distribucion %}
+      <div class="chart-row">
+        <span>{{ item.label }}</span>
+        <div class="track"><div class="fill w-{{ (item.pct // 10) * 10 }}"></div></div>
+        <strong class="text-right">{{ item.count }}</strong>
+      </div>
+      {% endfor %}
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card head">
+      <div class="card-title">{{ icon('scroll-text', 19) }} <h2>Actividad reciente</h2></div>
+      {% if g.current_user.role == 'admin' %}<a class="small" href="/app/auditoria">Ver todo</a>{% endif %}
+    </div>
+    <div class="timeline mt-5">
+      {% for event in auditoria %}
+      <div class="timeline-item {{ event.severity }}">
+        <span class="timeline-dot">{{ icon('circle-check' if event.severity == 'info' else 'triangle-alert', 16) }}</span>
+        <div>
+          <strong>{{ event.action|replace('_', ' ')|capitalize }}</strong>
+          <small>{{ event.detail }} · {{ event.timestamp.strftime('%d/%m %H:%M') }}</small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </article>
+</div>
+
+<div class="grid cols-2 mt-5">
+  <article class="card">
+    <div class="card head">
+      <div class="card-title">{{ icon('arrow-right', 19) }} <h2>Accesos rápidos</h2></div>
+    </div>
+    <div class="grid mt-5 gap-2">
+      <a class="btn ghost" href="/app/cursos">{{ icon('book-open', 17) }} Ver mis cursos</a>
+      {% if g.current_user.role in ('admin', 'docente') %}
+        <a class="btn ghost" href="/app/estudiantes">{{ icon('users', 17) }} Revisar estudiantes</a>
+      {% endif %}
+      <a class="btn ghost" href="/app/laboratorio">{{ icon('flask-conical', 17) }} Abrir laboratorio OWASP</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card head">
+      <div class="card-title">{{ icon('shield-check', 19) }} <h2>Estado de seguridad</h2></div>
+      <span class="badge ok">{{ icon('circle-check', 13) }} Controles activos</span>
+    </div>
+    <div class="grid mt-5 gap-2">
+      <div class="row small">{{ icon('key-round', 16) }} Access token HS256 con expiración de 15 min</div>
+      <div class="row small">{{ icon('lock', 16) }} Refresh token en cookie HttpOnly + SameSite=Strict</div>
+      <div class="row small">{{ icon('id-card', 16) }} Autorización por rol en cada endpoint</div>
+      <div class="row small">{{ icon('code', 16) }} CSP, nosniff, X-Frame-Options y Referrer-Policy</div>
+    </div>
+  </article>
+</div>
+{% endblock %}

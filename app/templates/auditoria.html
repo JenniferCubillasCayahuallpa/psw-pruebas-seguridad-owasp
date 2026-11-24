@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Auditoría · AulaSegura{% endblock %}
+{% block crumb %}Auditoría{% endblock %}
+{% block page_title %}Registro de seguridad{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <span class="hero-badge">{{ icon('scroll-text', 15) }} Trazabilidad de eventos</span>
+  <h1>Bitácora de seguridad</h1>
+  <p>Inicios de sesión, accesos denegados, intentos CSRF rechazados y acciones del laboratorio quedan registrados con fecha, usuario y dirección IP.</p>
+</section>
+
+<article class="card mt-5">
+  <div class="card head">
+    <div class="card-title">{{ icon('clipboard', 19) }} <h2>Eventos recientes</h2></div>
+    <span class="badge">{{ eventos|length }} registros</span>
+  </div>
+  <div class="table-wrap mt-5">
+    <table class="data">
+      <thead><tr><th>Fecha</th><th>Usuario</th><th>Acción</th><th>Detalle</th><th>IP</th><th>Nivel</th></tr></thead>
+      <tbody>
+        {% for event in eventos %}
+        <tr>
+          <td class="nowrap">{{ event.timestamp.strftime('%d/%m/%Y %H:%M') }}</td>
+          <td>{{ event.username }}</td>
+          <td><strong>{{ event.action|replace('_', ' ') }}</strong></td>
+          <td>{{ event.detail }}</td>
+          <td><code>{{ event.ip }}</code></td>
+          <td><span class="badge {{ 'warn' if event.severity == 'warn' else 'error' if event.severity == 'error' else 'ok' }}">{{ event.severity }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

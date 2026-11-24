@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Estudiantes · AulaSegura{% endblock %}
+{% block crumb %}Estudiantes{% endblock %}
+{% block page_title %}Estudiantes y calificaciones{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <span class="hero-badge">{{ icon('users', 15) }} Solo docentes y administradores</span>
+  <h1>Seguimiento académico</h1>
+  <p>Consulta el listado de estudiantes y registra calificaciones. La búsqueda se ejecuta en el servidor con consultas parametrizadas.</p>
+</section>
+
+<article class="card mt-5">
+  <div class="card head">
+    <div class="card-title">{{ icon('users', 19) }} <h2>Estudiantes</h2></div>
+    <label class="field search-field">
+      <span class="sr-only">Buscar estudiante</span>
+      <input id="student-search" type="search" placeholder="Buscar por nombre…" autocomplete="off">
+    </label>
+  </div>
+  <div class="table-wrap mt-5">
+    <table class="data">
+      <thead><tr><th>Nombre</th><th>Usuario</th><th>Correo</th><th>Estado</th></tr></thead>
+      <tbody id="student-results">
+        {% for student in estudiantes %}
+        <tr>
+          <td><strong>{{ student.full_name }}</strong></td>
+          <td><code>@{{ student.username }}</code></td>
+          <td>{{ student.email }}</td>
+          <td><span class="badge ok">Activo</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<article class="card mt-5">
+  <div class="card head">
+    <div class="card-title">{{ icon('chart', 19) }} <h2>Calificaciones</h2></div>
+    <span class="badge">{{ inscripciones|length }} inscripciones</span>
+  </div>
+  <div class="table-wrap mt-5">
+    <table class="data">
+      <thead><tr><th>Estudiante</th><th>Curso</th><th>Calificación</th></tr></thead>
+      <tbody>
+        {% for item in inscripciones %}
+        <tr>
+          <td>{{ item.student.full_name }}</td>
+          <td><span class="badge">{{ item.course.code }}</span> {{ item.course.name }}</td>
+          <td><input class="grade-input" type="number" min="0" max="20" value="{{ item.grade if item.grade is not none else '' }}" data-grade="{{ item.id }}" aria-label="Calificación de {{ item.student.full_name }}"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+{% endblock %}

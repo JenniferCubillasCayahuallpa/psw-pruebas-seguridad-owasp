@@ -1,0 +1,50 @@
+{% from '_icons.html' import icon %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AulaSegura · Pruebas de seguridad OWASP</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand compact">
+    <div class="brand-mark">{{ icon('shield-check', 22) }}</div>
+    <div class="brand-name">AulaSegura</div>
+  </div>
+  <div class="grow"></div>
+  <a class="btn ghost sm" href="/app/laboratorio">{{ icon('flask-conical', 16) }} Laboratorio</a>
+  <a class="btn primary sm" href="/login">{{ icon('key-round', 16) }} Ingresar</a>
+</header>
+
+<section class="landing-hero">
+  <div class="landing-icon">{{ icon('shield-check', 38) }}</div>
+  <h1>Pruebas de seguridad aplicadas a una app web</h1>
+  <p>Mini proyecto académico con backend Python, autenticación JWT, tres roles, pruebas funcionales con Selenium y un laboratorio controlado para detectar vulnerabilidades OWASP.</p>
+  <div class="row center">
+    <a class="btn primary" href="/login">{{ icon('arrow-right', 18) }} Abrir el portal</a>
+    <a class="btn ghost" href="/app/laboratorio">{{ icon('bug', 18) }} Ver hallazgos</a>
+  </div>
+</section>
+
+<section class="content grid cols-3 landing-grid">
+  <article class="card feature-card">
+    <div class="stat-icon">{{ icon('key-round', 21) }}</div>
+    <h3 class="mt-3">Token y roles</h3>
+    <p class="muted small">Access token firmado HS256, refresh con cookie HttpOnly y control de acceso para administrador, docente y estudiante.</p>
+  </article>
+  <article class="card feature-card">
+    <div class="stat-icon">{{ icon('bug', 21) }}</div>
+    <h3 class="mt-3">Laboratorio OWASP</h3>
+    <p class="muted small">Endpoints vulnerables a propósito: XSS, inyección SQL, IDOR, CSRF, cabeceras inseguras y errores detallados.</p>
+  </article>
+  <article class="card feature-card">
+    <div class="stat-icon">{{ icon('camera', 21) }}</div>
+    <h3 class="mt-3">Evidencias</h3>
+    <p class="muted small">El script de Selenium toma capturas reales de cada hallazgo y genera un informe con interpretación y prevención.</p>
+  </article>
+</section>
+</body>
+</html>

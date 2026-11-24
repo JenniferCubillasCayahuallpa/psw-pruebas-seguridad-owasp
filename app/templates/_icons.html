@@ -1,0 +1,4 @@
+{# Iconos Lucide inline vía sprite local (sin CDN, sin emojis). #}
+{% macro icon(name, size=20, class='') -%}
+<svg class="icon {{ class }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><use href="/static/icons.svg#{{ name }}"></use></svg>
+{%- endmacro %}

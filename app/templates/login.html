@@ -1,0 +1,71 @@
+{% from '_icons.html' import icon %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión · AulaSegura</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div class="auth-shell">
+  <section class="auth-art">
+    <div>
+      <div class="big-icon">{{ icon('shield-check', 34) }}</div>
+      <h1>AulaSegura</h1>
+      <p class="lead">Portal académico con controles OWASP aplicados: autenticación con token, roles diferenciados y trazabilidad de cada acción.</p>
+      <div class="auth-features">
+        <div class="auth-feature"><span class="bullet">{{ icon('key-round', 18) }}</span> Access token de 15 minutos + refresh token</div>
+        <div class="auth-feature"><span class="bullet">{{ icon('users', 18) }}</span> Tres roles: administrador, docente y estudiante</div>
+        <div class="auth-feature"><span class="bullet">{{ icon('bug', 18) }}</span> Laboratorio OWASP para pruebas controladas</div>
+        <div class="auth-feature"><span class="bullet">{{ icon('clipboard', 18) }}</span> Auditoría de accesos y eventos de seguridad</div>
+      </div>
+    </div>
+    <div class="auth-foot">Proyecto académico · Pruebas funcionales y de seguridad · PSW</div>
+  </section>
+
+  <section class="auth-panel">
+    <div class="auth-card">
+      <span class="badge">{{ icon('lock', 14) }} Acceso protegido</span>
+      <h2 class="mt-3">Bienvenido de nuevo</h2>
+      <p class="muted small">Ingresa con una de las cuentas de demostración.</p>
+
+      {% if reason == 'expired' %}
+        <div class="form-error mb-3">Tu sesión expiró. Vuelve a iniciar sesión.</div>
+      {% endif %}
+
+      <form id="login-form" class="stack" data-next="{{ next }}" novalidate>
+        <label class="field">Usuario o correo
+          <input type="text" name="username" autocomplete="username" placeholder="docente" required>
+        </label>
+        <label class="field">Contraseña
+          <input type="password" name="password" autocomplete="current-password" placeholder="••••••••" required>
+        </label>
+        <button class="btn primary block" type="submit">{{ icon('arrow-right', 18) }} Ingresar al portal</button>
+      </form>
+
+      <div class="mt-5">
+        <div class="row between">
+          <h3>Cuentas de prueba</h3>
+          <span class="small muted">3 roles</span>
+        </div>
+        <div class="demo-users">
+          <button class="demo-user" type="button" data-user="admin" data-pass="Admin123*">
+            <span>{{ icon('user-cog', 15) }} Administrador</span><code>admin / Admin123*</code>
+          </button>
+          <button class="demo-user" type="button" data-user="docente" data-pass="Profe123*">
+            <span>{{ icon('graduation-cap', 15) }} Docente</span><code>docente / Profe123*</code>
+          </button>
+          <button class="demo-user" type="button" data-user="estudiante" data-pass="Alumno123*">
+            <span>{{ icon('book-open', 15) }} Estudiante</span><code>estudiante / Alumno123*</code>
+          </button>
+        </div>
+      </div>
+      <p class="small muted mt-4">Las contraseñas se almacenan con bcrypt. Ningún token se guarda en localStorage.</p>
+    </div>
+  </section>
+</div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

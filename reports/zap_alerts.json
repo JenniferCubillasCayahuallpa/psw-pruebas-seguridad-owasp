@@ -1,0 +1,467 @@
+{
+  "fecha": "2026-11-24T00:36:03.850443+00:00",
+  "objetivo": "http://127.0.0.1:5000",
+  "total_alertas": 67,
+  "alertas_relevantes": [
+    {
+      "name": "Cookie Sin Flag HttpOnly",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login?reason=expired",
+      "param": "psw_csrf",
+      "description": "Se ha establecido una cookie sin el flag HttpOnly, lo que significa que JavaScript puede acceder a la cookie. Si un script malicioso puede ser ejecutado en esta página, entonces la cookie será accesible y puede ser transmitida a otro sitio. Si se trata de una cookie de sesión, el secuestro de sesión puede ser posible.",
+      "solution": "Asegúrese de que la flag HttpOnly está establecida para todas las cookies.",
+      "cweid": "1004",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/app",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/robots.txt",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login?reason=expired",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/app/laboratorio",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/sitemap.xml",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Cookie Sin Flag HttpOnly",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login",
+      "param": "psw_csrf",
+      "description": "Se ha establecido una cookie sin el flag HttpOnly, lo que significa que JavaScript puede acceder a la cookie. Si un script malicioso puede ser ejecutado en esta página, entonces la cookie será accesible y puede ser transmitida a otro sitio. Si se trata de una cookie de sesión, el secuestro de sesión puede ser posible.",
+      "solution": "Asegúrese de que la flag HttpOnly está establecida para todas las cookies.",
+      "cweid": "1004",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login?password=ZAP&username=ZAP",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/static/favicon.svg",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/static/js/app.js",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/static/css/styles.css",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login?password=ZAP&reason=expired&username=ZAP",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Cookie Sin Flag HttpOnly",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login?password=ZAP&reason=expired&username=ZAP",
+      "param": "psw_csrf",
+      "description": "Se ha establecido una cookie sin el flag HttpOnly, lo que significa que JavaScript puede acceder a la cookie. Si un script malicioso puede ser ejecutado en esta página, entonces la cookie será accesible y puede ser transmitida a otro sitio. Si se trata de una cookie de sesión, el secuestro de sesión puede ser posible.",
+      "solution": "Asegúrese de que la flag HttpOnly está establecida para todas las cookies.",
+      "cweid": "1004",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/static/css",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/static",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Cookie Sin Flag HttpOnly",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/login?password=ZAP&username=ZAP",
+      "param": "psw_csrf",
+      "description": "Se ha establecido una cookie sin el flag HttpOnly, lo que significa que JavaScript puede acceder a la cookie. Si un script malicioso puede ser ejecutado en esta página, entonces la cookie será accesible y puede ser transmitida a otro sitio. Si se trata de una cookie de sesión, el secuestro de sesión puede ser posible.",
+      "solution": "Asegúrese de que la flag HttpOnly está establecida para todas las cookies.",
+      "cweid": "1004",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/static/js",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Falta de cabecera Anti-Clickjacking",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/buscar?q=prueba",
+      "param": "x-frame-options",
+      "description": "La respuesta no protege contra ataques de \"ClickJacking\". Debes incluir Content-Security-Policy con la directiva \"frame-ancestors\" o X-Frame-Options.",
+      "solution": "Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.\nSi espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva \"frame-ancestors\" de la Política de Seguridad de Contenidos.",
+      "cweid": "1021",
+      "wascid": "15"
+    },
+    {
+      "name": "Cabecera Content Security Policy (CSP) no configurada",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/buscar?q=prueba",
+      "param": "",
+      "description": "La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/buscar?q=prueba",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Falta encabezado X-Content-Type-Options",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/buscar?q=prueba",
+      "param": "x-content-type-options",
+      "description": "La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en 'nosniff'. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.",
+      "solution": "Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a 'nosniff' para todas las páginas web.\nSi es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Falta de cabecera Anti-Clickjacking",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "x-frame-options",
+      "description": "La respuesta no protege contra ataques de \"ClickJacking\". Debes incluir Content-Security-Policy con la directiva \"frame-ancestors\" o X-Frame-Options.",
+      "solution": "Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.\nSi espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva \"frame-ancestors\" de la Política de Seguridad de Contenidos.",
+      "cweid": "1021",
+      "wascid": "15"
+    },
+    {
+      "name": "Cabecera Content Security Policy (CSP) no configurada",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "",
+      "description": "La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Falta de cabecera Anti-Clickjacking",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "x-frame-options",
+      "description": "La respuesta no protege contra ataques de \"ClickJacking\". Debes incluir Content-Security-Policy con la directiva \"frame-ancestors\" o X-Frame-Options.",
+      "solution": "Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.\nSi espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva \"frame-ancestors\" de la Política de Seguridad de Contenidos.",
+      "cweid": "1021",
+      "wascid": "15"
+    },
+    {
+      "name": "Ausencia de Tokens Anti-CSRF",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "",
+      "description": "No se encontraron tokens Anti-CSRF en formulario de envío HTML.\nUna solicutud falsa entre sitios en un ataque que compromete y obliga a una víctima a enviar su solicitud HTTP a un destino objetivo sin su conocimiento o intención para poder realizar una acción como víctima. La causa oculta es la funcionalidad de la aplicación utilizando acciones de URL/formulario que pueden ser adivinados de forma repetible. La naturaleza del ataque es que CSRG explota la confianza que un sitio web proporciona a un usuario. Por el contrario, las cadenas de comandos de los sitios cruzados (XSS) explotan la confianza que un usuario proporciona en un sitio web. Al igual que XSS, los ataques CSRG no son de forma necesaria de sitios cruzados, pero hay la posibilidad de que si pueden serlo. La falsificación de las solicitudes ente los sitios también se conoce como CSRF, XSRG, ataques con un solo clic, montaje de sesión, diputado confundido y navegación en alta mar.\n\nLos ataques de CSRG son muy efectivos en varias situaciones, que incluyen:\n*La victima tiene una sesión activa en el sitio de destino.\n    *La víctima se autoriza por medio de la autenticación HTTP en el sitio de destino.\n    *La víctima se encuentra en la misma red local que el sitio de destino.\n\nCSRF se ha utilizado especialmente para poder realizar una acción contra un sitio objetivo utilizando los privilegios de la víctima, pero se han revelado técnicas recientes para difundir información al obtener el acceso a la respuesta. El riesgo de divulgación de información aumenta de forma drástica cuando el sitio de destino se encuentra vulnerable a XSS, porque XSS se puede utilizar como una plataforma para CSRF, lo que le permite al atacante que opere desde adentro de los líites de la misma política de origen.",
+      "solution": "Fase: Arquitectura y Diseño\nUtilizar una biblioteca o framework verificado y confiable que evite esta vulnerabilidad o proporcione elementos que faciliten evitarla.\nPor ejemplo, utilice el paquete anti-CSRG como el CSRGuard de OWASP.\n\nFase: Implementación\nAsegúrese de que su aplicación esté libre de fallas de secuencias de comandos entre sitios, ya que la mayoría de las defensas de CSRF pueden detenerse por alto por medio del uso de secuencias de comandos manejadas por el atacante.\n\nFase: Arquitectura y Diseño\nOrigina un nonce único para cada uno de los formularios, coloque el nonce en el formularo y confirme la independencia al obtener el formulario. Asegúrese de que el nonce no sea predecible (CWE-330).\nUsted tiene que tener en cuenta que esto puede pasar desapercibido utilizando XSS.\n\nIdentificar las operaciones que sean especialmente peligrosas. Cuando el usuario desarrolla una operación peligrosa, envíe una solicitud de confirmación de forma separada para poder garantizar que el usuario tenga la intención de desarrollar esa operación.\nUsted tiene que tener en cuenta que esto puede pasar desapercibido utilizando XSS.\n\nUtilice el control de gestión de la sesión de ESAPI.\nEste control introduce un elemento para CSRF.\n\nNo utilice el método GET para ninguna de las solicitudes que puedan desencadenar un cambio de estado.\n\nFase: Implementación\nRevise que la solicitud se creó en la página esperada. Esto podría quebrar la funcionalidad auténtica, ya que los usuarios o los representantes puede ser que hayan desactivado el envío de Referer por motivos de privacidad.",
+      "cweid": "352",
+      "wascid": "9"
+    },
+    {
+      "name": "Cabecera Content Security Policy (CSP) no configurada",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "",
+      "description": "La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Ausencia de Tokens Anti-CSRF",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "",
+      "description": "No se encontraron tokens Anti-CSRF en formulario de envío HTML.\nUna solicutud falsa entre sitios en un ataque que compromete y obliga a una víctima a enviar su solicitud HTTP a un destino objetivo sin su conocimiento o intención para poder realizar una acción como víctima. La causa oculta es la funcionalidad de la aplicación utilizando acciones de URL/formulario que pueden ser adivinados de forma repetible. La naturaleza del ataque es que CSRG explota la confianza que un sitio web proporciona a un usuario. Por el contrario, las cadenas de comandos de los sitios cruzados (XSS) explotan la confianza que un usuario proporciona en un sitio web. Al igual que XSS, los ataques CSRG no son de forma necesaria de sitios cruzados, pero hay la posibilidad de que si pueden serlo. La falsificación de las solicitudes ente los sitios también se conoce como CSRF, XSRG, ataques con un solo clic, montaje de sesión, diputado confundido y navegación en alta mar.\n\nLos ataques de CSRG son muy efectivos en varias situaciones, que incluyen:\n*La victima tiene una sesión activa en el sitio de destino.\n    *La víctima se autoriza por medio de la autenticación HTTP en el sitio de destino.\n    *La víctima se encuentra en la misma red local que el sitio de destino.\n\nCSRF se ha utilizado especialmente para poder realizar una acción contra un sitio objetivo utilizando los privilegios de la víctima, pero se han revelado técnicas recientes para difundir información al obtener el acceso a la respuesta. El riesgo de divulgación de información aumenta de forma drástica cuando el sitio de destino se encuentra vulnerable a XSS, porque XSS se puede utilizar como una plataforma para CSRF, lo que le permite al atacante que opere desde adentro de los líites de la misma política de origen.",
+      "solution": "Fase: Arquitectura y Diseño\nUtilizar una biblioteca o framework verificado y confiable que evite esta vulnerabilidad o proporcione elementos que faciliten evitarla.\nPor ejemplo, utilice el paquete anti-CSRG como el CSRGuard de OWASP.\n\nFase: Implementación\nAsegúrese de que su aplicación esté libre de fallas de secuencias de comandos entre sitios, ya que la mayoría de las defensas de CSRF pueden detenerse por alto por medio del uso de secuencias de comandos manejadas por el atacante.\n\nFase: Arquitectura y Diseño\nOrigina un nonce único para cada uno de los formularios, coloque el nonce en el formularo y confirme la independencia al obtener el formulario. Asegúrese de que el nonce no sea predecible (CWE-330).\nUsted tiene que tener en cuenta que esto puede pasar desapercibido utilizando XSS.\n\nIdentificar las operaciones que sean especialmente peligrosas. Cuando el usuario desarrolla una operación peligrosa, envíe una solicitud de confirmación de forma separada para poder garantizar que el usuario tenga la intención de desarrollar esa operación.\nUsted tiene que tener en cuenta que esto puede pasar desapercibido utilizando XSS.\n\nUtilice el control de gestión de la sesión de ESAPI.\nEste control introduce un elemento para CSRF.\n\nNo utilice el método GET para ninguna de las solicitudes que puedan desencadenar un cambio de estado.\n\nFase: Implementación\nRevise que la solicitud se creó en la página esperada. Esto podría quebrar la funcionalidad auténtica, ya que los usuarios o los representantes puede ser que hayan desactivado el envío de Referer por motivos de privacidad.",
+      "cweid": "352",
+      "wascid": "9"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Falta encabezado X-Content-Type-Options",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "x-content-type-options",
+      "description": "La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en 'nosniff'. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.",
+      "solution": "Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a 'nosniff' para todas las páginas web.\nSi es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Falta encabezado X-Content-Type-Options",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/login_sqli",
+      "param": "x-content-type-options",
+      "description": "La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en 'nosniff'. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.",
+      "solution": "Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a 'nosniff' para todas las páginas web.\nSi es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/perfil?id=2",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Falta de cabecera Anti-Clickjacking",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/cambiar_rol",
+      "param": "x-frame-options",
+      "description": "La respuesta no protege contra ataques de \"ClickJacking\". Debes incluir Content-Security-Policy con la directiva \"frame-ancestors\" o X-Frame-Options.",
+      "solution": "Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.\nSi espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva \"frame-ancestors\" de la Política de Seguridad de Contenidos.",
+      "cweid": "1021",
+      "wascid": "15"
+    },
+    {
+      "name": "Cabecera Content Security Policy (CSP) no configurada",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/cambiar_rol",
+      "param": "",
+      "description": "La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/cambiar_rol",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Falta encabezado X-Content-Type-Options",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/cambiar_rol",
+      "param": "x-content-type-options",
+      "description": "La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en 'nosniff'. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.",
+      "solution": "Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a 'nosniff' para todas las páginas web.\nSi es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Falta de cabecera Anti-Clickjacking",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/sin_headers",
+      "param": "x-frame-options",
+      "description": "La respuesta no protege contra ataques de \"ClickJacking\". Debes incluir Content-Security-Policy con la directiva \"frame-ancestors\" o X-Frame-Options.",
+      "solution": "Los navegadores web modernos admiten las cabeceras HTTP Content-Security-Policy y X-Frame-Options. Asegúrese de que una de ellas está configurada en todas las páginas web devueltas por su sitio/aplicación.\nSi espera que la página esté enmarcada solo por páginas en su servidor (por ejemplo, si forma parte de un FRAMESET), utilice SAMEORIGIN; de lo contrario, si no espera que la página esté enmarcada, utilice DENY. Alternativamente, considere implementar la directiva \"frame-ancestors\" de la Política de Seguridad de Contenidos.",
+      "cweid": "1021",
+      "wascid": "15"
+    },
+    {
+      "name": "Cabecera Content Security Policy (CSP) no configurada",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/sin_headers",
+      "param": "",
+      "description": "La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/sin_headers",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "Falta encabezado X-Content-Type-Options",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/sin_headers",
+      "param": "x-content-type-options",
+      "description": "La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en 'nosniff'. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.",
+      "solution": "Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a 'nosniff' para todas las páginas web.\nSi es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Divulgación de error de aplicación",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/error",
+      "param": "",
+      "description": "Esta página contiene un mensaje de error/advertencia que podría revelar información sensible como la ubicación del archivo que produjo la excepción no controlada. Esta información puede ser usada para lanzas futuros ataques contra la aplicación web. La alerta podría ser una falso positivo si el mensaje de error es encontrado dentro de una página de documentación.",
+      "solution": "Revisar el código de fuente de esta página. Implementación de páginas de error personalizadas. Considerar implementar un mecanismos para proveer una única referencia/identificación de error para el cliente (navegador) mientras insertando los detalles en el sitio del navegador y no exponiéndolos al usuario.",
+      "cweid": "550",
+      "wascid": "13"
+    },
+    {
+      "name": "Cabecera Content Security Policy (CSP) no configurada",
+      "risk": "Medium",
+      "url": "http://127.0.0.1:5000/lab/error",
+      "param": "",
+      "description": "La Política de seguridad de contenido (CSP) es una capa adicional de seguridad que ayuda a detectar y mitigar ciertos tipos de ataques, incluidos Cross Site Scripting (XSS) y ataques de inyección de datos. Estos ataques se utilizan para todo, desde el robo de datos hasta la desfiguración del sitio o la distribución de malware. CSP proporciona un conjunto de encabezados HTTP estándar que permiten a los propietarios de sitios web declarar fuentes de contenido aprobadas que los navegadores deberían poder cargar en esa página; los tipos cubiertos son JavaScript, CSS, marcos HTML, fuentes, imágenes y objetos incrustados como applets de Java, ActiveX, archivos de audio y video.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. esté configurado para establecer la cabecera Content-Security-Policy.",
+      "cweid": "693",
+      "wascid": "15"
+    },
+    {
+      "name": "Revelación de IP privada",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/error",
+      "param": "",
+      "description": "Se ha encontrado una IP privada (como 10.x.x.x, 172.x.x.x, 192.168.x.x) o un nombre de host privado de Amazon EC2 (por ejemplo, ip-10-0-56-78) en el cuerpo de la respuesta HTTP. Esta información podría ser útil para futuros ataques dirigidos a sistemas internos.",
+      "solution": "Eliminar la dirección IP privada del cuerpo de la respuesta HTTP. Para los comentarios, utilice comentarios JSP/ASP/PHP en lugar de comentarios HTML/JavaScript que pueden ser vistos por los navegadores de los clientes.",
+      "cweid": "497",
+      "wascid": "13"
+    },
+    {
+      "name": "El servidor filtra información de versión a través del campo \"Server\" del encabezado de respuesta HTTP",
+      "risk": "Low",
+      "url": "http://127.0.0.1:5000/lab/error",
+      "param": "",
+      "description": "El servidor web/aplicación está filtrando información de versión a través de la cabecera de respuesta HTTP \"Server\". El acceso a dicha información puede facilitar a los atacantes la identificación de otras vulnerabilidades a las que está sujeto su servidor web/aplicación.",
+      "solution": "Asegúrese de que su servidor web, servidor de aplicaciones, balanceador de carga, etc. está configurado para suprimir la cabecera \"Server\" o proporcionar detalles genéricos.",
+      "cweid": "497",
+      "wascid": "13"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "titulo": "Prueba funcional automatizada · Selenium",
+  "fecha": "2026-11-23T23:20:31.573865+00:00",
+  "url": "http://127.0.0.1:5000",
+  "navegador": "Chrome headless (Selenium Manager)",
+  "total_pasos": 8,
+  "estado": "PASÓ",
+  "pasos": [
+    {
+      "paso": "Abrir sitio",
+      "detalle": "Página /login cargada",
+      "captura": "selenium/01_login.png",
+      "estado": "OK"
+    },
+    {
+      "paso": "Iniciar sesión",
+      "detalle": "Docente autenticado; access token en cookie HttpOnly",
+      "captura": "selenium/02_dashboard.png",
+      "estado": "OK"
+    },
+    {
+      "paso": "Validar token",
+      "detalle": "psw_access HttpOnly y psw_csrf presente",
+      "captura": "",
+      "estado": "OK"
+    },
+    {
+      "paso": "Listar cursos",
+      "detalle": "Catálogo cargado con datos del backend",
+      "captura": "selenium/03_cursos.png",
+      "estado": "OK"
+    },
+    {
+      "paso": "Crear curso",
+      "detalle": "Curso QA-220 enviado con X-CSRF-Token",
+      "captura": "selenium/04_curso_creado.png",
+      "estado": "OK"
+    },
+    {
+      "paso": "Validar resultado",
+      "detalle": "Curso QA-220 visible en el listado",
+      "captura": "selenium/05_curso_verificado.png",
+      "estado": "OK"
+    },
+    {
+      "paso": "Cerrar sesión",
+      "detalle": "Cookies de acceso eliminadas",
+      "captura": "",
+      "estado": "OK"
+    },
+    {
+      "paso": "Control RBAC",
+      "detalle": "Estudiante recibe 403 al intentar /app/usuarios",
+      "captura": "selenium/06_rbac_denegado.png",
+      "estado": "OK"
+    }
+  ]
+}

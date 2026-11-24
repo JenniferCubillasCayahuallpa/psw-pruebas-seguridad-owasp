@@ -1,0 +1,13 @@
+# Secretos y configuración local
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Base de datos y logs generados
+instance/*.db
+reports/server.log

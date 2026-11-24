@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Cursos · AulaSegura{% endblock %}
+{% block crumb %}Cursos{% endblock %}
+{% block page_title %}Catálogo de cursos{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <span class="hero-badge">{{ icon('book-open', 15) }} Gestión académica</span>
+  <h1>Cursos del periodo</h1>
+  <p>{% if g.current_user.role == 'estudiante' %}Estos son tus cursos inscritos. Puedes inscribirte a otros desde el catálogo completo.{% else %}Administra la oferta académica, horarios y docentes responsables.{% endif %}</p>
+</section>
+
+<article class="card mt-5">
+  <div class="card head">
+    <div class="card-title">{{ icon('clipboard', 19) }} <h2>Listado de cursos</h2></div>
+    <div class="row">
+      <span class="badge">{{ cursos|length }} cursos</span>
+      {% if puede_crear %}<button class="btn primary sm" type="button" data-modal-open="course-modal">{{ icon('plus', 16) }} Nuevo curso</button>{% endif %}
+    </div>
+  </div>
+  <div class="table-wrap mt-5">
+    <table class="data">
+      <thead>
+        <tr><th>Código</th><th>Curso</th><th>Horario</th><th>Aula</th><th>Docente</th><th>Estudiantes</th><th></th></tr>
+      </thead>
+      <tbody>
+        {% for course in cursos %}
+        <tr>
+          <td><span class="badge">{{ course.code }}</span></td>
+          <td><strong>{{ course.name }}</strong><br><small class="muted">{{ course.description[:60] }}</small></td>
+          <td>{{ course.schedule }}</td>
+          <td>{{ course.classroom }}</td>
+          <td>{{ course.teacher }}</td>
+          <td>{{ course.students }}</td>
+          <td class="text-right">
+            {% if g.current_user.role == 'estudiante' %}
+              {% if course.id in inscritos %}<span class="badge ok">Inscrito</span>
+              {% else %}<button class="btn subtle sm" type="button" data-enroll="{{ course.id }}">Inscribirme</button>{% endif %}
+            {% else %}
+              <span class="badge docente">Gestionable</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="muted">No hay cursos para mostrar.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+
+{% if puede_crear %}
+<div class="modal-backdrop" id="course-modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="course-modal-title">
+    <div class="row between">
+      <h2 id="course-modal-title">{{ icon('plus', 19) }} Nuevo curso</h2>
+      <button class="btn ghost sm" type="button" data-modal-close>{{ icon('circle-x', 16) }}</button>
+    </div>
+    <form id="course-form" class="stack mt-5">
+      <label class="field">Código<input name="code" placeholder="PSW-401" maxlength="24" required></label>
+      <label class="field">Nombre<input name="name" placeholder="Nombre del curso" maxlength="120" required></label>
+      <div class="grid cols-2">
+        <label class="field">Horario<input name="schedule" placeholder="Lun 08:00 - 10:00" maxlength="80"></label>
+        <label class="field">Aula<input name="classroom" placeholder="A-101" maxlength="40"></label>
+      </div>
+      <label class="field">Descripción<textarea name="description" maxlength="800"></textarea></label>
+      <button class="btn primary" type="submit">{{ icon('circle-check', 17) }} Guardar curso</button>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

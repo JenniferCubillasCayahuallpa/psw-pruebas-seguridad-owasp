@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% from '_icons.html' import icon %}
+{% block title %}Usuarios · AulaSegura{% endblock %}
+{% block crumb %}Usuarios y roles{% endblock %}
+{% block page_title %}Usuarios y roles{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <span class="hero-badge">{{ icon('user-cog', 15) }} Acceso restringido a administradores</span>
+  <h1>Control de identidades</h1>
+  <p>Tres roles con permisos distintos. Las contraseñas nunca se almacenan en texto plano: se hashean con bcrypt antes de guardarse.</p>
+</section>
+
+<article class="card mt-5">
+  <div class="card head">
+    <div class="card-title">{{ icon('id-card', 19) }} <h2>Cuentas registradas</h2></div>
+    <button class="btn primary sm" type="button" data-modal-open="user-modal">{{ icon('plus', 16) }} Nuevo usuario</button>
+  </div>
+  <div class="table-wrap mt-5">
+    <table class="data">
+      <thead><tr><th>Usuario</th><th>Nombre</th><th>Correo</th><th>Rol</th><th>Estado</th></tr></thead>
+      <tbody>
+        {% for user in usuarios %}
+        <tr>
+          <td><code>@{{ user.username }}</code></td>
+          <td><strong>{{ user.full_name }}</strong></td>
+          <td>{{ user.email }}</td>
+          <td><span class="badge {{ user.role }}">{{ user.role_label }}</span></td>
+          <td><span class="badge {{ 'ok' if user.active else 'error' }}">{{ 'Activo' if user.active else 'Inactivo' }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<div class="modal-backdrop" id="user-modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="user-modal-title">
+    <div class="row between">
+      <h2 id="user-modal-title">{{ icon('plus', 19) }} Crear usuario</h2>
+      <button class="btn ghost sm" type="button" data-modal-close>{{ icon('circle-x', 16) }}</button>
+    </div>
+    <form id="user-form" class="stack mt-5">
+      <div class="grid cols-2">
+        <label class="field">Usuario<input name="username" placeholder="nuevo.usuario" maxlength="32" required></label>
+        <label class="field">Rol
+          <select name="role">
+            <option value="estudiante">Estudiante</option>
+            <option value="docente">Docente</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </label>
+      </div>
+      <label class="field">Nombre completo<input name="full_name" placeholder="Nombre Apellido" maxlength="120" required></label>
+      <label class="field">Correo<input name="email" type="email" placeholder="nombre@academia.demo" maxlength="120" required></label>
+      <label class="field">Contraseña temporal<input name="password" type="password" minlength="10" placeholder="Mínimo 10 caracteres" required></label>
+      <button class="btn primary" type="submit">{{ icon('circle-check', 17) }} Crear cuenta</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
