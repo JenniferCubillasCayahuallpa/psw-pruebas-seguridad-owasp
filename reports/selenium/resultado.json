@@ -1,6 +1,6 @@
 {
   "titulo": "Prueba funcional automatizada · Selenium",
-  "fecha": "2026-11-24T00:58:58.489958+00:00",
+  "fecha": "2026-11-24T02:49:26.613579+00:00",
   "url": "http://127.0.0.1:5000",
   "navegador": "Chrome headless (Selenium Manager)",
   "total_pasos": 8,
@@ -32,13 +32,13 @@
     },
     {
       "paso": "Crear curso",
-      "detalle": "Curso QA-439 enviado con X-CSRF-Token",
+      "detalle": "Curso QA-110 enviado con X-CSRF-Token",
       "captura": "selenium/04_curso_creado.png",
       "estado": "OK"
     },
     {
       "paso": "Validar resultado",
-      "detalle": "Curso QA-439 visible en el listado",
+      "detalle": "Curso QA-110 visible en el listado",
       "captura": "selenium/05_curso_verificado.png",
       "estado": "OK"
     },

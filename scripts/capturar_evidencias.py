@@ -12,12 +12,14 @@ Guarda PNG en reports/capturas/ y datos HTTP en reports/evidencias.json.
 
 import argparse
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 
 import requests
 from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -93,6 +95,9 @@ def http_check_csrf(method: str, path: str, base_url: str, data: dict | None = N
 def run(base_url: str = "http://127.0.0.1:5000", only_report: bool = False) -> dict:
     base_url = base_url.rstrip("/")
     data = load_evidence()
+    # Sólo la captura completa regenera el listado; --only-report añade la del informe.
+    if not only_report:
+        data["capturas"] = []
     driver = build_driver()
     wait = WebDriverWait(driver, 20)
 
@@ -102,6 +107,19 @@ def run(base_url: str = "http://127.0.0.1:5000", only_report: bool = False) -> d
         print(f"  [IMG] {filename}: {description}")
 
     def wait_text(text: str, selector: str = "body") -> None:
+        # Chrome a veces devuelve un error de inspector transitorio al leer un nodo
+        # que acaba de cambiar; reintentamos dentro del mismo timeout.
+        deadline = time.time() + 25
+        last_error: Exception | None = None
+        while time.time() < deadline:
+            try:
+                wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, selector), text))
+                return
+            except WebDriverException as exc:
+                last_error = exc
+                time.sleep(0.3)
+        if last_error is not None:
+            raise last_error
         wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, selector), text))
 
     try:

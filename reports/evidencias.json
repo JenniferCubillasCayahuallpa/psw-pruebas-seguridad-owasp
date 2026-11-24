@@ -1,6 +1,6 @@
 {
   "titulo": "Evidencias de pruebas de seguridad OWASP",
-  "fecha": "2026-11-24T00:59:14.057975+00:00",
+  "fecha": "2026-11-24T02:49:40.504400+00:00",
   "metodo": "Selenium (Chrome headless) + peticiones HTTP reproducibles",
   "capturas": [
     {
@@ -58,58 +58,6 @@
     {
       "archivo": "capturas/14_zap_alerts.png",
       "descripcion": "Interfaz de OWASP ZAP con las alertas del escaneo"
-    },
-    {
-      "archivo": "capturas/01_login.png",
-      "descripcion": "Pantalla de acceso del portal (diseño celeste/azul/blanco)"
-    },
-    {
-      "archivo": "capturas/02_dashboard_admin.png",
-      "descripcion": "Panel del administrador con controles de seguridad activos"
-    },
-    {
-      "archivo": "capturas/03_laboratorio.png",
-      "descripcion": "Portal del laboratorio con los seis vectores de prueba"
-    },
-    {
-      "archivo": "capturas/04_xss_reflejado.png",
-      "descripcion": "XSS reflejado: el payload se ejecuta y modifica el DOM"
-    },
-    {
-      "archivo": "capturas/05_xss_corregido.png",
-      "descripcion": "Versión corregida: escape de salida + CSP bloquean el payload"
-    },
-    {
-      "archivo": "capturas/06_sqli_bypass.png",
-      "descripcion": "Inyección SQL: bypass de autenticación y volcado de usuarios"
-    },
-    {
-      "archivo": "capturas/07_sqli_corregido.png",
-      "descripcion": "Versión corregida: consulta parametrizada, sin bypass"
-    },
-    {
-      "archivo": "capturas/08_idor.png",
-      "descripcion": "IDOR: perfil ajeno consultado sin autenticación"
-    },
-    {
-      "archivo": "capturas/09_csrf_get.png",
-      "descripcion": "CSRF: una petición GET cambia el rol sin token ni autenticación"
-    },
-    {
-      "archivo": "capturas/10_headers_inseguros.png",
-      "descripcion": "Respuesta sin cabeceras de seguridad"
-    },
-    {
-      "archivo": "capturas/11_error_verbose.png",
-      "descripcion": "Fuga de información: traza con secretos y rutas internas"
-    },
-    {
-      "archivo": "capturas/12_rbac_denegado.png",
-      "descripcion": "Control funcionando: estudiante recibe 403 en administración"
-    },
-    {
-      "archivo": "capturas/13_informe_generado.png",
-      "descripcion": "Informe de hallazgos con las capturas incrustadas"
     }
   ],
   "verificaciones": {

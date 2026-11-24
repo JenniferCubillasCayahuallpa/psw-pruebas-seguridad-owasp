@@ -47,17 +47,33 @@ def main() -> None:
 
     url = f"http://127.0.0.1:{args.port}"
     LOGS.parent.mkdir(parents=True, exist_ok=True)
-    log = LOGS.open("w", encoding="utf-8")
-    process = subprocess.Popen(
-        [sys.executable, str(ROOT / "run.py"), "--lab", "--port", str(args.port)],
-        cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
-    )
+    process = None
+    log = None
+
+    # Si ya hay un servidor, comprobamos que sea el laboratorio antes de lanzar otro.
+    try:
+        existing = requests.get(url + "/api/lab/estado", timeout=2)
+        if existing.status_code == 200 and existing.json().get("lab_mode"):
+            print(f"Servidor en modo laboratorio ya activo en {url}; se reutiliza.")
+        else:
+            print(
+                f"Ya hay un servidor en {url} que NO es el laboratorio (HTTP {existing.status_code}).\n"
+                "Ciérralo con Ctrl+C y vuelve a ejecutar este script, o usa otro --port."
+            )
+            raise SystemExit(1)
+    except requests.RequestException:
+        log = LOGS.open("w", encoding="utf-8")
+        process = subprocess.Popen(
+            [sys.executable, str(ROOT / "run.py"), "--lab", "--port", str(args.port)],
+            cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,
+        )
 
     try:
-        print(f"Esperando servidor en {url} ...")
-        if not wait_health(url):
-            print("El servidor no respondió. Revisa reports/server.log")
-            raise SystemExit(1)
+        if process is not None:
+            print(f"Esperando servidor en {url} ...")
+            if not wait_health(url):
+                print("El servidor no respondió. Revisa reports/server.log")
+                raise SystemExit(1)
         print("Servidor listo (LAB_MODE=1)")
 
         if not args.skip_functional:
@@ -73,15 +89,17 @@ def main() -> None:
         print("  reports/informe_seguridad.md / .html")
         print("  reports/capturas/*.png")
     finally:
-        process.terminate()
-        try:
-            process.wait(timeout=10)
-        except subprocess.TimeoutExpired:
-            if sys.platform == "win32":
-                subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"], check=False)
-            else:
-                process.kill()
-        log.close()
+        if process is not None:
+            process.terminate()
+            try:
+                process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                if sys.platform == "win32":
+                    subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"], check=False)
+                else:
+                    process.kill()
+        if log is not None:
+            log.close()
 
 
 if __name__ == "__main__":
