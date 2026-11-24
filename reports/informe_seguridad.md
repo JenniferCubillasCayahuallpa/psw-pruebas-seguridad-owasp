@@ -1,6 +1,6 @@
 # Informe de pruebas de seguridad · AulaSegura
 
-**Fecha:** 2026-11-23  
+**Fecha:** 2026-11-24  
 **Proyecto:** Mini aplicación web académica (Python · Flask · JWT · 3 roles)  
 **Metodología:** OWASP Top 10 2021, OWASP ASVS 4.0 y chequeo manual asistido con Selenium  
 **Herramientas:** OWASP ZAP / Burp Suite Community (guía de uso en Anexo A), Selenium + Chrome headless  
@@ -289,3 +289,15 @@ Estas alertas confirman de forma automatizada los hallazgos **OWASP-04** (ausenc
 - `capturas/12_rbac_denegado.png` — Control funcionando: estudiante recibe 403 en administración
 - `capturas/13_informe_generado.png` — Informe de hallazgos con las capturas incrustadas
 - `capturas/14_zap_alerts.png` — Interfaz de OWASP ZAP con las alertas del escaneo
+- `capturas/01_login.png` — Pantalla de acceso del portal (diseño celeste/azul/blanco)
+- `capturas/02_dashboard_admin.png` — Panel del administrador con controles de seguridad activos
+- `capturas/03_laboratorio.png` — Portal del laboratorio con los seis vectores de prueba
+- `capturas/04_xss_reflejado.png` — XSS reflejado: el payload se ejecuta y modifica el DOM
+- `capturas/05_xss_corregido.png` — Versión corregida: escape de salida + CSP bloquean el payload
+- `capturas/06_sqli_bypass.png` — Inyección SQL: bypass de autenticación y volcado de usuarios
+- `capturas/07_sqli_corregido.png` — Versión corregida: consulta parametrizada, sin bypass
+- `capturas/08_idor.png` — IDOR: perfil ajeno consultado sin autenticación
+- `capturas/09_csrf_get.png` — CSRF: una petición GET cambia el rol sin token ni autenticación
+- `capturas/10_headers_inseguros.png` — Respuesta sin cabeceras de seguridad
+- `capturas/11_error_verbose.png` — Fuga de información: traza con secretos y rutas internas
+- `capturas/12_rbac_denegado.png` — Control funcionando: estudiante recibe 403 en administración
